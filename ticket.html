@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Conf 2026 - Your Ticket</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <nav>
+            <div class="logo">Coding Conf</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Ticket Display Section -->
+    <main>
+        <section class="hero ticket-section">
+
+            <h1 id="congratsHeading">
+                Congrats, <span id="userNameDisplay">Developer</span>!
+            </h1>
+
+            <p class="subtitle">
+                Your ticket has been successfully generated.
+                Below is your official conference pass.
+            </p>
+
+            <!-- Digital Ticket Card -->
+            <div class="ticket-card">
+
+              <div class="ticket-header">
+    <h2>Coding Conf 2026</h2>
+    <span class="ticket-badge">VIP PASS</span>
+</div>
+
+<div class="ticket-serial">
+    <p>Ticket Number: <strong id="ticketSerial">---</strong></p>
+</div>  
+
+                <div class="ticket-body">
+
+                    <div class="avatar-container">
+                        <img
+                            id="userAvatarDisplay"
+                            src=""
+                            alt="User Avatar"
+                            class="ticket-avatar"
+                        >
+                    </div>
+
+                    <div class="ticket-info">
+
+                        <p>
+                            <strong>Name:</strong>
+                            <span id="ticketName">---</span>
+                        </p>
+
+                        <p>
+                            <strong>Email:</strong>
+                            <span id="ticketEmail">---</span>
+                        </p>
+
+                        <p>
+                            <strong>GitHub:</strong>
+                            <span id="ticketGithub">---</span>
+                        </p>
+
+                        <p>
+                            <strong>Date:</strong>
+                            October 26, 2026
+                        </p>
+
+                        <p>
+                            <strong>Location:</strong>
+                            Papine, Kgn
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back to Home Button -->
+            <div class="cta-container" style="margin-top: 2rem;">
+                <a href="index.html" class="btn-primary">
+                    Back to Home
+                </a>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Coding Conf. All rights reserved.</p>
+    </footer>
+
+    <!-- LocalStorage: Retrieve Registration Information -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // Retrieve saved information from LocalStorage
+            const savedName = localStorage.getItem("confUserName");
+            const savedEmail = localStorage.getItem("confUserEmail");
+            const savedGithub = localStorage.getItem("confUserGithub");
+            const savedAvatar = localStorage.getItem("confUserAvatar");
+
+// Generate and save a unique ticket serial number
+const savedSerial = localStorage.getItem("confTicketSerial");
+
+if (!savedSerial) {
+    const newSerial = "CC26-" + Math.floor(10000 + Math.random() * 90000);
+    localStorage.setItem("confTicketSerial", newSerial);
+}
+
+document.getElementById("ticketSerial").textContent =
+    localStorage.getItem("confTicketSerial");
+
+            // Check whether registration information exists
+            if (savedName) {
+
+                // Display registered name
+                document.getElementById("ticketName").innerText = savedName;
+
+                document.getElementById("userNameDisplay").innerText = savedName;
+
+                // Display email address
+                document.getElementById("ticketEmail").innerText = savedEmail;
+
+                // Display GitHub username
+                document.getElementById("ticketGithub").innerText = savedGithub;
+
+                // Display uploaded avatar
+                const avatarImg = document.getElementById("userAvatarDisplay");
+
+                if (avatarImg && savedAvatar) {
+                    avatarImg.src = savedAvatar;
+                }
+
+            } else {
+
+                // Redirect visitors who have not registered
+                alert("Please fill out the registration form first!");
+
+                window.location.href = "login.html";
+
+            }
+
+        });
+    </script>
+
+</body>
+</html>
+

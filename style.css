@@ -1,0 +1,535 @@
+:root {
+    --bg-color: #0d010a;
+    --card-bg: rgba(26, 11, 46, 0.7);
+    --accent-color: #8a2be2;
+    --accent-hover: #a855f7;
+    --text-color: #f0f0f5;
+    --text-muted: #b0a8c0;
+    --border-color: rgba(138, 43, 226, 0.3);
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: rgba(13, 6, 26, 0.9);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Logo Sizing Fix */
+.logo img {
+    max-height: 35px;
+    width: auto;
+    display: block;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav a:hover, nav a.active {
+    color: var(--text-color);
+}
+
+main {
+    flex: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.hero {
+    text-align: center;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.event-metadata {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent-color), #4a0e85);
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s ease, background 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, var(--accent-hover), #5a129e);
+}
+
+.overview {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+}
+
+.overview h2 {
+    margin-bottom: 1rem;
+    color: #d1b3ff;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Ticket Card Styling */
+.ticket-card {
+    background: linear-gradient(135deg, rgba(45, 16, 88, 0.8), rgba(20, 8, 40, 0.9));
+    border: 1px solid var(--accent-color);
+    border-radius: 16px;
+    padding: 2rem;
+    max-width: 500px;
+    margin: 2rem auto 0 auto;
+    box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
+    text-align: left;
+}
+
+.ticket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.ticket-badge {
+    background: var(--accent-color);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.ticket-body {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.ticket-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-color);
+}
+
+.ticket-info p {
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+/* --- Form Interactive States & Responsive Design Updates --- */
+
+/* Input Base & Focus States */
+.registration-form input[type="text"],
+.registration-form input[type="email"],
+.registration-form input[type="file"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: rgba(26, 11, 46, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.registration-form input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
+}
+
+/* Hover States */
+.upload-dropzone:hover,
+.registration-form input:hover {
+    border-color: var(--accent-hover);
+}
+
+/* Error States */
+.error-text {
+    color: #ff5252;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+    display: block;
+}
+
+.input-group.error input {
+    border-color: #ff5252;
+}
+
+/* Responsive Media Query for Mobile Views */
+@media (max-width: 768px) {
+    main {
+        padding: 1.5rem 1rem;
+        gap: 1.5rem;
+    }
+    
+    .hero {
+        padding: 2rem 1rem;
+    }
+
+    nav {
+        padding: 0 1rem;
+    }
+
+    .ticket-card {
+        padding: 1.5rem;
+    }
+}
+
+/* Ticket Serial Number */
+.ticket-serial {
+    margin-bottom: 1.5rem;
+    padding: 0.8rem;
+    background: rgba(138, 43, 226, 0.12);
+    border: 1px dashed var(--accent-color);
+    border-radius: 8px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.ticket-serial strong {
+    color: #ffffff;
+    letter-spacing: 2px;
+}
+
+
+/* =================================
+   REGISTRATION FORM STYLING
+================================= */
+
+.form-section {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+}
+
+.form-section h2 {
+    text-align: center;
+    color: #d1b3ff;
+    margin-bottom: 0.8rem;
+    font-size: 1.8rem;
+}
+
+.form-section .subtitle {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Form layout */
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+/* Form labels */
+
+.registration-form label {
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* Input fields */
+
+.registration-form input[type="text"],
+.registration-form input[type="email"] {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    background: rgba(26, 11, 46, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.registration-form input:focus {
+    border-color: var(--accent-hover);
+    box-shadow: 0 0 0 3px rgba(156, 71, 230, 0.15);
+}
+
+.registration-form input::placeholder {
+    color: #9489a5;
+}
+
+/* Avatar upload area */
+
+.registration-form input[type="file"] {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(26, 11, 46, 0.6);
+    border: 1px dashed var(--accent-color);
+    border-radius: 8px;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+/* Validation error messages */
+
+.error-msg {
+    color: #ff5252;
+    font-size: 0.85rem;
+    min-height: 1rem;
+    display: block;
+}
+
+.input-group.error input {
+    border-color: #ff5252;
+}
+
+/* Submit button */
+
+.registration-form .cta-container {
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.registration-form button {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+/* Mobile responsiveness */
+
+@media (max-width: 600px) {
+    .form-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .form-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .registration-form {
+        gap: 1.2rem;
+    }
+
+    .registration-form button {
+        width: 100%;
+    }
+}
+
+/* Custom Avatar Upload Button */
+
+.registration-form input[type="file"]::file-selector-button {
+    background: linear-gradient(135deg, var(--accent-color), #4a0e85);
+    color: white;
+    border: none;
+    padding: 0.65rem 1rem;
+    border-radius: 6px;
+    margin-right: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.registration-form input[type="file"]::file-selector-button:hover {
+    background: linear-gradient(135deg, var(--accent-hover), #5a129e);
+}
+
+/* Mobile Ticket Responsiveness */
+@media (max-width: 768px) {
+
+    .ticket-card {
+        width: 100%;
+        max-width: 100%;
+        padding: 1rem;
+        margin: 1.5rem auto;
+    }
+
+    .ticket-body {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .ticket-info {
+        width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    .ticket-header {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .ticket-serial {
+        overflow-wrap: anywhere;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+
+    nav ul {
+        gap: 0.8rem;
+    }
+
+    .ticket-section {
+        padding: 1.5rem 1rem;
+    }
+
+}
+
+/* Modern CSS Functional Selectors */
+
+/* Group related form elements */
+:is(.form-section, .overview, .ticket-card) {
+    backdrop-filter: blur(10px);
+}
+
+/* Style form labels and headings consistently */
+:where(.registration-form, .ticket-info) p {
+    line-height: 1.7;
+}
+
+/* Apply focus styling to interactive elements */
+:is(input, button, a):focus-visible {
+    outline: 2px solid var(--accent-hover);
+    outline-offset: 4px;
+}
+
+/* Remove unnecessary margin from the final form group */
+.input-group:not(:last-child) {
+    margin-bottom: 0.2rem;
+}
+
+
+/* =================================
+   ACCESSIBILITY IMPROVEMENTS
+================================= */
+
+/* Clear keyboard focus for all interactive elements */
+:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 4px;
+}
+
+/* Improve visibility of form labels */
+.registration-form label {
+    display: block;
+    line-height: 1.6;
+}
+
+/* Make buttons easier to identify */
+button,
+.btn-primary {
+    cursor: pointer;
+}
+
+/* Prevent text from becoming difficult to read */
+.error-msg {
+    line-height: 1.5;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Highlight form groups containing invalid inputs */
+.input-group:has(.error-msg:not(:empty)) {
+    padding: 0.5rem;
+    border-left: 3px solid #ff5252;
+    border-radius: 4px;
+}

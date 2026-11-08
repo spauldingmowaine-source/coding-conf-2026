@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Conf 2026 - Register</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <!-- Header & Navigation -->
+    <header>
+        <nav>
+            <div class="logo">Coding Conf</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="login.html" class="active">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Registration Form Section -->
+    <main>
+        <section class="form-section">
+            <h2>Conference Registration</h2>
+            <p class="subtitle">Secure your spot for Coding Conf 2026 by filling out the form below.</p>
+
+            <form id="registrationForm" class="registration-form">
+                <div class="input-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" placeholder="Enter your full name">
+                    <small class="error-msg" id="nameError" aria-live="polite"></small>
+                </div>
+
+                <div class="input-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" placeholder="name@example.com">
+                    <small class="error-msg" id="emailError" aria-live="polite"></small>
+                </div>
+
+                <div class="input-group">
+                    <label for="githubUser">GitHub Username *</label>
+                    <input type="text" id="githubUser" placeholder="username">
+                    <small class="error-msg" id="githubError" aria-live="polite"></small>
+                </div>
+
+                <div class="input-group">
+                    <label for="avatar">Upload Avatar (JPEG/PNG) *</label>
+                    <input type="file" id="avatar" accept="image/png, image/jpeg">
+                    <small class="error-msg" id="avatarError" aria-live="polite"></small>
+                </div>
+
+                <div class="cta-container">
+                    <button type="submit" class="btn-primary">Generate My Ticket</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Coding Conf. All rights reserved.</p>
+    </footer>
+
+    <script src="js/validation.js"></script>
+</body>
+</html>
